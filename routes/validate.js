@@ -25,8 +25,9 @@ router.get('/', function(req, res) {
 
 });
 
-router.get('/time/', function(req, res) {
-    request('http://auth.igeek.asia/v1/time', function(error, response, body){
+router.get('/time', function(req, res) {
+    request('http://' + models.authIP + ':' + models.authPort + models.authPrefix + '/time', //
+    function(error, response, body){
         if (!error && response.statusCode == 200) {
             res.send(body);
         }
@@ -39,9 +40,9 @@ router.post('/', function(req, res) {
     var tmp = req.body.secret;
     var openid = req.body.openid;
     var post_option = {
-        host: "auth.igeek.asia",
-        path: "/v1",
-        port: 80,
+        host: models.authIP,
+        port: models.authPort,
+        path: models.authPrefix,
         method: "POST",
         headers:{
             'Content-Type' : 'application/x-www-form-urlencoded'

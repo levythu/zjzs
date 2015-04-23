@@ -15,7 +15,10 @@ var pattern =
     [exactHandler.check_reinburse_ticket,   exactHandler.faire_reinburse_ticket],
     [exactHandler.check_list_ticket,        exactHandler.faire_list_ticket],
     [usersHandler.check_bind_accout,        usersHandler.faire_bind_accout],
-    [usersHandler.check_unbind_accout,      usersHandler.faire_unbind_accout]
+    [usersHandler.check_unbind_accout,      usersHandler.faire_unbind_accout],
+    [usersHandler.check_bookable_activity,  usersHandler.faire_bookable_activity],
+    [usersHandler.check_apply_exp,          usersHandler.faire_apply_exp],
+    [usersHandler.check_get_help,           usersHandler.faire_get_help]
 ]
 
 module.exports = function(req, res)
@@ -38,6 +41,6 @@ module.exports = function(req, res)
                 return;
             }
         }
-        res.send(template.getPlainTextTemplate(msg,"Bingo Lingo!"));
+        res.send(template.getPlainTextTemplate(msg,"对不起，没有合适的指令，请检查你的指令格式是否正确。"));
     });
 }
